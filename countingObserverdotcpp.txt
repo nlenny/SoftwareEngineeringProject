@@ -1,0 +1,28 @@
+//Ngwa T. Leonard
+//Created: 10/29/2014
+//Implementing counting_observer.cpp
+
+#include "counting_observer.h"
+#include "monitor.h"
+
+//#================================================================================
+
+CountingObserver::CountingObserver() : upperCaseCount(0)
+{
+}
+
+//#===============================================================================
+
+void CountingObserver::update(Observable* updatedState)
+{
+  upperCaseCount++;
+}
+
+//===============================================================================
+
+//Keep observers informed on the state of the subjects
+
+void CountingObserver::show_data()
+{
+std::cout<<"The following changes occured---   "<< upperCaseCount << std::endl;
+}

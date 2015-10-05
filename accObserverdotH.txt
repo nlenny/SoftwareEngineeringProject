@@ -1,0 +1,24 @@
+//Ngwa T. Leonard 
+//Created: 10/28/2014
+//Accumulating_Observer header file
+
+#ifndef ACCUMULATING_OBSERVER_H
+#define ACCUMULATING_OBSERVER_H
+#include "observable.h"
+#include "observer.h"
+#include "monitor.h"
+
+#include <vector>
+
+class AccumulatingObserver : public Observer
+{
+ public:
+  AccumulatingObserver() {}
+  virtual void update(Observable*);
+  void show_data();
+
+ private:
+  std::vector<char> capitalLetters;
+};
+
+#endif

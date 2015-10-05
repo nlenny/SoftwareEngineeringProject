@@ -1,0 +1,30 @@
+//Ngwa T.Leonard
+//Created: 10/29/2014
+//accumulating_observer.cpp implementation
+
+#include <iostream>
+#include "accumulating_observer.h"
+#include <vector>
+
+//======================================================================================
+
+void AccumulatingObserver::update(Observable* updatedState)
+{
+  char state = updatedState->get_state();
+  capitalLetters.push_back(state);
+}
+
+//=====================================================================================
+
+// Show the current states of the subjects
+
+void AccumulatingObserver::show_data()
+{
+  std::cout << "The states of the subjects are :"<< std::endl;
+  std::vector<char>::iterator myIterator;
+  for(myIterator = capitalLetters.begin(); myIterator!= capitalLetters.end(); myIterator++)
+    {
+      std::cout << *myIterator;
+    }
+  std::cout << std::endl;
+}

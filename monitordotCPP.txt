@@ -1,0 +1,47 @@
+#include "monitor.h"
+#include "observer.h"
+
+
+void UpperCaseMonitor::attach(Observer* theSubject)
+{
+  myStateObserver.push_back(theSubject);
+}
+
+
+
+void UpperCaseMonitor::detach(Observer* mySubject)
+{
+  // number of observers
+  int observerCount = myStateObserver.size();
+  int i = 0;
+  for(;i < observerCount; i++)
+    {
+      if(myStateObserver[i] == mySubject)
+	{
+	  myStateObserver.erase(myStateObserver.begin() + i);
+	  return;
+	}
+    }
+}
+
+
+
+void UpperCaseMonitor::notify()
+{
+  // tell the observers what happen
+  for (int i = 0; i < myStateObserver.size(); i++)
+    myStateObserver[i]->update(this);
+}
+
+
+
+void UpperCaseMonitor::watch(char c)
+{
+  // check if letter is a capital letter
+  if(isupper(c))
+    {
+      std::cout << ">>> " << c << "\n";
+      // change set to that letter to keep track
+      set_state(c);
+    }
+}

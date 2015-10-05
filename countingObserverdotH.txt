@@ -1,0 +1,26 @@
+#ifndef COUNTING_OBSERVER_H
+#define COUNTING_OBSERVER_H
+
+#include "observable.h"
+#include "observer.h"
+#include "monitor.h"
+
+#include <iostream>
+
+
+class CountingObserver : public Observer
+{
+ public:
+
+  CountingObserver();
+  virtual void update(Observable*);
+  void show_data();
+
+ private:
+
+  UpperCaseMonitor *myUpperCase;
+  int upperCaseCount;
+};
+
+
+#endif

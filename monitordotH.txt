@@ -1,0 +1,29 @@
+#ifndef MONITOR_H
+#define MONITOR_H
+
+#include "observable.h"
+#include "observer.h"
+
+#include <iostream>
+#include <vector>
+
+class  UpperCaseMonitor : public Observable
+{
+ public:
+
+  void attach(Observer*); 
+  void detach(Observer*);
+  void watch(char);
+ 
+  virtual void notify();
+  virtual char get_state() {return subjectState; } 
+  virtual void set_state(char newState) {subjectState = newState; notify();} 
+  
+
+ private:
+
+  std::vector<Observer*> myStateObserver;
+  int subjectState;
+};
+
+#endif
